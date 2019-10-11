@@ -4,7 +4,7 @@
  */
 
 /**
- * Dummy.
+ * Helper class for calculating fakulty.
  * 
  * @author Julian
  */
