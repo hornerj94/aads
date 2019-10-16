@@ -9,18 +9,35 @@
  * @author Julian
  */
 public final class fakHelper {
-    //---------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------
 
     public static void main(String[] args) {
         System.out.println(calculateFak(5));
     }
 
-    public static int calculateFak(int fak1) {
-        if (fak1 == 1) {
+    // --------------------------------------------------------------------------------------------
+
+    /**
+     * Calculates and returns the faculty for the given input. The method works
+     * recursive.
+     * 
+     * @param base The base
+     * @return The faculty
+     */
+    public static int calculateFak(int base) {
+        if (base == 1) {
             return 1;
         }
-        return fak1 * calculateFak(fak1 - 1);
+        return base * calculateFak(base - 1);
     }
 
-    //---------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------
+
+    /**
+     * Hide utility class constructor.
+     */
+    private fakHelper() {
+    }
+
+    // --------------------------------------------------------------------------------------------
 }

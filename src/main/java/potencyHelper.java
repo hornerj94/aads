@@ -9,22 +9,41 @@
  * @author Julian
  */
 public final class potencyHelper {
-    //---------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------
 
     public static void main(final String[] args) {
         System.out.println(calculatePotency(-5, 3));
     }
 
-    //---------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------
 
+    /**
+     * Calculates and returns the potency for the given inputs.
+     * 
+     * @param base     The base of the calculation
+     * @param exponent The exponent of the calculation
+     * @return The potency
+     */
     public static int calculatePotency(final int base, final int exponent) {
-        int result = 0;
-        for (int i = 0; i < exponent; i++) {
-            result = base * base;
+        int result = 1;
+        if (exponent == 0) {
+            return result;
+        }
+
+        for (int i = 1; i < exponent; i++) {
+            result = result * base;
         }
 
         return result;
     }
 
-    //---------------------------------------------------------------------------------------------
+    // --------------------------------------------------------------------------------------------
+
+    /**
+     * Hide utility class constructor.
+     */
+    private potencyHelper() {
+    }
+
+    // --------------------------------------------------------------------------------------------
 }
