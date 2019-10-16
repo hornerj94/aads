@@ -10,10 +10,15 @@ package utils;
  * 
  * @author Trang
  */
-public final class gcdHelper {
+public final class GcdHelper {
     // --------------------------------------------------------------------------------------------
 
-    public static void main(String[] args) {
+    /**
+     * Main method for testing.
+     * 
+     * @param args The arguments
+     */
+    public static void main(final String[] args) {
         System.out.println(calculateGCD(9, 3));
     }
 
@@ -27,7 +32,7 @@ public final class gcdHelper {
      * @param number2 The second number
      * @return The gcd
      */
-    public static int calculateGCD(int number1, int number2) {
+    public static int calculateGCD(final int number1, final int number2) {
         if (number1 > number2) {
             return calculateGCD((number1 - number2), number2);
         } else if (number2 > number1) {
@@ -42,7 +47,7 @@ public final class gcdHelper {
     /**
      * Hide utility class constructor.
      */
-    private gcdHelper() {
+    private GcdHelper() {
     }
 
     // --------------------------------------------------------------------------------------------

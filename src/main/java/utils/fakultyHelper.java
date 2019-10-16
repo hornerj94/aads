@@ -10,10 +10,15 @@ package utils;
  * 
  * @author Julian
  */
-public final class fakultyHelper {
+public final class FakultyHelper {
     // --------------------------------------------------------------------------------------------
 
-    public static void main(String[] args) {
+    /**
+     * Main method for testing.
+     * 
+     * @param args The arguments
+     */
+    public static void main(final String[] args) {
         System.out.println(calculateFakulty(5));
     }
 
@@ -26,7 +31,7 @@ public final class fakultyHelper {
      * @param base The base
      * @return The faculty
      */
-    public static int calculateFakulty(int base) {
+    public static int calculateFakulty(final int base) {
         if (base == 1) {
             return 1;
         }
@@ -38,7 +43,7 @@ public final class fakultyHelper {
     /**
      * Hide utility class constructor.
      */
-    private fakultyHelper() {
+    private FakultyHelper() {
     }
 
     // --------------------------------------------------------------------------------------------

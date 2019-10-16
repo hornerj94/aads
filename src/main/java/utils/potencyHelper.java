@@ -10,9 +10,14 @@ package utils;
  * 
  * @author Julian
  */
-public final class potencyHelper {
+public final class PotencyHelper {
     // --------------------------------------------------------------------------------------------
 
+    /**
+     * Main method for testing.
+     * 
+     * @param args The arguments
+     */
     public static void main(final String[] args) {
         System.out.println(calculatePotency(-5, 3));
     }
@@ -44,7 +49,7 @@ public final class potencyHelper {
     /**
      * Hide utility class constructor.
      */
-    private potencyHelper() {
+    private PotencyHelper() {
     }
 
     // --------------------------------------------------------------------------------------------

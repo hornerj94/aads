@@ -2,10 +2,10 @@
     "configurations": [
         {
             "type": "java",
-            "name": "CodeLens (Launch) - dummy",
+            "name": "CodeLens (Launch) - FakultyHelper",
             "request": "launch",
-            "mainClass": "dummy",
+            "mainClass": "utils.FakultyHelper",
             "projectName": "aads_302c4fae"
-        }
+        },
     ]
 }
