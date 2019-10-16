@@ -10,11 +10,11 @@ package utils;
  * 
  * @author Julian
  */
-public final class fakHelper {
+public final class fakultyHelper {
     // --------------------------------------------------------------------------------------------
 
     public static void main(String[] args) {
-        System.out.println(calculateFak(5));
+        System.out.println(calculateFakulty(5));
     }
 
     // --------------------------------------------------------------------------------------------
@@ -26,11 +26,11 @@ public final class fakHelper {
      * @param base The base
      * @return The faculty
      */
-    public static int calculateFak(int base) {
+    public static int calculateFakulty(int base) {
         if (base == 1) {
             return 1;
         }
-        return base * calculateFak(base - 1);
+        return base * calculateFakulty(base - 1);
     }
 
     // --------------------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ public final class fakHelper {
     /**
      * Hide utility class constructor.
      */
-    private fakHelper() {
+    private fakultyHelper() {
     }
 
     // --------------------------------------------------------------------------------------------
