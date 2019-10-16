@@ -8,27 +8,27 @@
  * 
  * @author Trang
  */
-public class ggTHelper {
+public final class ggTHelper {
     //---------------------------------------------------------------------------------------------
 
     public static void main(String[] args) {
-        System.out.println(ggT(9,3));
+        System.out.println(calculateGgT(9,3));
     }
 
     //---------------------------------------------------------------------------------------------
 
-    public static int ggT(int zahl1, int zahl2) {
+    public static int calculateGgT(int zahl1, int zahl2) {
         System.out.println("zahl1: " + zahl1);
         System.out.println("zahl2: " + zahl2);
 
         if (zahl1 > zahl2) {
             zahl1 = zahl1 - zahl2;
-            int returnValue = ggT(zahl1, zahl2);
+            int returnValue = calculateGgT(zahl1, zahl2);
             System.out.println("Zahl1 größer, Die Rückgabe war: " + returnValue);
             return returnValue;            
         } else if (zahl2 > zahl1) {
             zahl2 = zahl2- zahl1;
-            int returnValue = ggT(zahl1, zahl2);
+            int returnValue = calculateGgT(zahl1, zahl2);
             System.out.println("Zahl2 größer, Die Rückgabe war: " + returnValue);
             return returnValue;            
         } else {
