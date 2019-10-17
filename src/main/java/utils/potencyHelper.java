@@ -19,7 +19,7 @@ public final class PotencyHelper {
      * @param args The arguments
      */
     public static void main(final String[] args) {
-        System.out.println(calculatePotency(-5, 3));
+        System.out.println(calculatePotency(-5, 2));
     }
 
     // --------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ public final class PotencyHelper {
             return result;
         }
 
-        for (int i = 1; i < exponent; i++) {
+        for (int i = 1; i <= exponent; i++) {
             result = result * base;
         }
 
