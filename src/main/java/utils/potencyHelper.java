@@ -1,9 +1,9 @@
-package utils;
-
 /*
  * Copyright 2019 (C) Julian.
  * All Rights Reserved.
  */
+
+package utils;
 
 /**
  * Helper class for calculating potency.
