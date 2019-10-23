@@ -1,4 +1,0 @@
-{
-    "java.format.settings.url": "${workspaceFolder}\\eclipse-format-settings.xml",
-    "java.checkstyle.configuration": "${workspaceFolder}\\checkstyle.xml"
-}

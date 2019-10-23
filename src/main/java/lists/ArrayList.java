@@ -20,7 +20,7 @@ public class ArrayList<T> implements List<T> {
      * Default constructor.
      */
     public ArrayList() {
-        elements = T[25];
+//        elements = T[25];
     }
 
     //---------------------------------------------------------------------------------------------
