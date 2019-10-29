@@ -7,6 +7,8 @@ package lists;
 
 /**
  * My own implementation of an ArrayList.
+ * 
+ * @param <T> The type of the elements of the list
  */
 public class ArrayList<T> implements List<T> {
     //---------------------------------------------------------------------------------------------
@@ -14,7 +16,7 @@ public class ArrayList<T> implements List<T> {
     /** The array of the list to store the elements. */
     private T[] elements;
 
-    //---------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
 
     /**
      * Default constructor.
@@ -23,13 +25,13 @@ public class ArrayList<T> implements List<T> {
 //        elements = T[25];
     }
 
-    //---------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public boolean add(Object element) {
+    public boolean add(final Object element) {
         return false;
     }
 
@@ -37,7 +39,7 @@ public class ArrayList<T> implements List<T> {
      * {@inheritDoc}
      */
     @Override
-    public void add(int index, Object element) {
+    public void add(final int index, final Object element) {
     }
 
     /**
@@ -52,7 +54,7 @@ public class ArrayList<T> implements List<T> {
      * {@inheritDoc}
      */
     @Override
-    public T get(int index) {
+    public T get(final int index) {
         return null;
     }
 
@@ -68,7 +70,7 @@ public class ArrayList<T> implements List<T> {
      * {@inheritDoc}
      */
     @Override
-    public boolean remove(Object element) {
+    public boolean remove(final Object element) {
         return false;
     }
 
@@ -76,7 +78,7 @@ public class ArrayList<T> implements List<T> {
      * {@inheritDoc}
      */
     @Override
-    public T remove(int index) {
+    public T remove(final int index) {
         return null;
     }
 

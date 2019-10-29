@@ -11,7 +11,7 @@ package lists;
  * @param <T> The type of the list
  */
 public interface List<T> {
-    // ---------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
 
     /**
      * Add an element to the end of the list. Returns whether the operation was
@@ -20,7 +20,9 @@ public interface List<T> {
      * @param element The element to add
      * @return Whether the insertion completed successfully.
      */
-    boolean add(final T element);
+    boolean add(T element);
+
+    //----------------------------------------------------------------------------------------------
 
     /**
      * Add an element to the given position of the list. Move all elements to the
@@ -29,7 +31,9 @@ public interface List<T> {
      * @param index   the index to insert the element
      * @param element The element to add
      */
-    void add(final int index, final T element);
+    void add(int index, T element);
+
+    //----------------------------------------------------------------------------------------------
 
     /**
      * Gets the current size of the list.
@@ -38,6 +42,8 @@ public interface List<T> {
      */
     int size();
 
+    //----------------------------------------------------------------------------------------------
+
     /**
      * Get the element at the given index in the list. Returns null if no element
      * was found.
@@ -45,7 +51,9 @@ public interface List<T> {
      * @param index The stated index
      * @return The stated element or null
      */
-    T get(final int index);
+    T get(int index);
+
+    //----------------------------------------------------------------------------------------------
 
     /**
      * Get whether the list is empty.
@@ -54,6 +62,8 @@ public interface List<T> {
      */
     boolean isEmpty();
 
+    //----------------------------------------------------------------------------------------------
+
     /**
      * Removes the given element from the list. Returns whether the operation was
      * successfully.
@@ -61,7 +71,9 @@ public interface List<T> {
      * @param element The stated element
      * @return Whether the operation was successfully
      */
-    boolean remove(final T element);
+    boolean remove(T element);
+
+    //----------------------------------------------------------------------------------------------
 
     /**
      * Removes the element at the given index from the list. Returns the removed
@@ -70,7 +82,7 @@ public interface List<T> {
      * @param index The stated index
      * @return The removed element or null
      */
-    T remove(final int index);
+    T remove(int index);
 
     // ---------------------------------------------------------------------------------------------
 }
