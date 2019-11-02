@@ -1,5 +1,5 @@
 /*
- * Copyright 2019 (C) Julian.
+ * Copyright 2019 (C) by Julian Horner.
  * All Rights Reserved.
  */
 
