@@ -16,7 +16,7 @@ public final class RuntimeHelper {
     //----------------------------------------------------------------------------------------------
 
     /** The number of executions. */
-    private static final int NUMBER_OF_EXECUTION = 2000;
+    private static final int NUMBER_OF_EXECUTIONS = 2000;
 
     /** Two million. */
     private static final int TWO_MILLION = 2_000_000;
@@ -142,7 +142,7 @@ public final class RuntimeHelper {
     private static void printLinearSearchToFile(final List<Integer> list, final String fileAppender,
             final int listSize) {
         List<Long> durations = new LinkedList<Long>();
-        for (int i = 0; i < NUMBER_OF_EXECUTION; i++) {
+        for (int i = 0; i < NUMBER_OF_EXECUTIONS; i++) {
             durations.add(doLinearSearch(list, listSize));
         }
 
@@ -166,7 +166,7 @@ public final class RuntimeHelper {
     private static void printBinarySearchToFile(final List<Integer> list, final String fileAppender,
             final int listSize) {
         List<Long> durations = new LinkedList<Long>();
-        for (int i = 0; i < NUMBER_OF_EXECUTION; i++) {
+        for (int i = 0; i < NUMBER_OF_EXECUTIONS; i++) {
             durations.add(doBinarySearch(list, listSize));
         }
 
