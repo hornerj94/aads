@@ -10,15 +10,15 @@ package lists;
  * 
  * @param <T> The type of the list
  */
-public interface List<T> {
+public interface List<T> extends Iterable<T> {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * Add an element to the end of the list. Returns whether the operation was
-     * successfully.
+     * Add an element to the end of the list. Returns whether the if this list changed as a result
+     * of the call.
      * 
      * @param element The element to add
-     * @return Whether the insertion completed successfully.
+     * @return <tt>true</tt> if this list changed as a result of the call
      */
     boolean add(T element);
 
