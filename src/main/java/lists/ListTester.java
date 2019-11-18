@@ -5,6 +5,8 @@
 
 package lists;
 
+import java.util.Iterator;
+
 /**
  * Class for testing my list implementations.
  * 
@@ -19,22 +21,24 @@ public final class ListTester {
      * @param args The arguments
      */
     public static void main(final String[] args) {
-        List<Integer> list = new LinkedList<>();
+        List<Integer> list = new SinglyLinkedList<>();
 
-        // test add, get, size, isEmpty, toString, for-each and iterator
+        for (int i = 0; i < 10; i++) {
+            list.add(i);
+        }
+                
+        for (int i = 0; i < list.size(); i++) {
+            System.out.println(list.get(i));
+        }
         
-//        for (int i = 0; i < list.size(); i++) {
-//            System.out.println(list.get(i));
-//        }
-//        //Iteration using the iterator directly
-//        Iterator<Integer> it = list.iterator();
-//        while (it.hasNext()) {
-//            System.out.println(it.next());
-//        }
-//        //Iteration using for-each
-//        for (Integer i : list) {
-//            System.out.println(i);
-//        }
+        Iterator<Integer> it = list.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
+        
+        for (Integer i : list) {
+            System.out.println(i);
+        }
     }
 
     //----------------------------------------------------------------------------------------------
