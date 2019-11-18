@@ -5,13 +5,15 @@
 
 package lists;
 
+import java.util.Iterator;
+
 /**
  * My own implementation of an ArrayList.
  * 
  * @param <T> The type of the elements of the list
  */
 public class ArrayList<T> implements List<T> {
-    //---------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
 
     /** The array of the list to store the elements. */
     private T[] elements;
@@ -82,5 +84,13 @@ public class ArrayList<T> implements List<T> {
         return null;
     }
 
-    //---------------------------------------------------------------------------------------------
+    //----------------------------------------------------------------------------------------------
+
+    @Override
+    public Iterator<T> iterator() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    //----------------------------------------------------------------------------------------------
 }
