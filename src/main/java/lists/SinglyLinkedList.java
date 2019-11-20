@@ -32,13 +32,22 @@ public final class SinglyLinkedList<T> implements List<T> {
     /**
      * A node of the list containing the data it holds and a reference to the next node in the list.
      */
-    private class ListNode {
+    private final class ListNode {
         
         /** The successor of this node. */
         private ListNode next;
         
         /** The data the node holds. */
         private T data;
+        
+        /**
+         * Creates an list node with the given data.
+         * 
+         * @param value The stated data
+         */
+        private ListNode(final T value) {
+            data = value;
+        }
     }
     
     //----------------------------------------------------------------------------------------------
@@ -58,32 +67,13 @@ public final class SinglyLinkedList<T> implements List<T> {
     @Override
     public void add(final int index, final T element) {
         if (index > size() || index < 0) { throw new IndexOutOfBoundsException(); }
-
-        ListNode newNode = new ListNode();
-        newNode.data = element;
-
-        boolean insertAsFirst = (index == 0);
-        boolean insertAsLast = (index == size());
-        if (insertAsFirst) {
-            newNode.next = head;
-            head = newNode;
-            last = head;
-        } else if (insertAsLast) {
-            last.next = newNode;
-            last = newNode;
-        } else {
-            ListNode node = head;
-            int subseqIndex = index - 1;
-            for (int i = 0; i < subseqIndex; i++) {
-                node = node.next;
-            }
-            ListNode subseqNode = node.next;
-            node.next = newNode;
-            newNode.next = subseqNode;
-        }
-
+        
+        chainNode(index, new ListNode(element));
         size++;
     }
+    
+    //----------------------------------------------------------------------------------------------
+
 
     /**
      * {@inheritDoc}
@@ -100,15 +90,7 @@ public final class SinglyLinkedList<T> implements List<T> {
         return node.data;
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean remove(final T element) {
-        //size--;
-        
-        return false;
-    }
+    //----------------------------------------------------------------------------------------------
 
     /**
      * {@inheritDoc}
@@ -117,31 +99,7 @@ public final class SinglyLinkedList<T> implements List<T> {
     public T remove(final int index) {
         checkIndex(index);
         
-        ListNode element = null;
-        boolean removeFirst = (index == 0);
-        if (removeFirst) {
-            element = head;
-            head = head.next;
-        } else {
-            ListNode node = head;
-            int subseqIndex = index - 1;
-            for (int i = 0; i < subseqIndex; i++) {
-                node = node.next;
-            }
-            
-            boolean removeLast = (index == (size() - 1));
-            if (removeLast) {
-                element = node.next;
-                
-                node.next = null;
-                node = last;
-            } else {
-                ListNode subseqNode = node.next;
-                element = subseqNode;
-                node.next = subseqNode.next;
-            }
-        }
-        
+        ListNode element = unchainNode(index);
         size--;
 
         return element.data;
@@ -205,15 +163,171 @@ public final class SinglyLinkedList<T> implements List<T> {
                                 
                 return data;
             }
-            
         };
     }
     
     //----------------------------------------------------------------------------------------------
     
     /**
-     * Checks the given index whether it is greater than or equal to the size or less than 0. If yes
-     * an <code>IndexOutOfBoundsException</code> is thrown.
+     * Chains the given list node into the list.
+     * 
+     * @param index The index at which the node should be inserted
+     * @param node The node to insert
+     */
+    private void chainNode(final int index, final ListNode node) {
+        boolean insertAsFirst = (index == 0);        
+        if (insertAsFirst) {
+            chainFirst(node);
+        } else {
+            boolean insertAsLast = (index == size());
+            if (insertAsLast) {
+                chainLast(node);
+            } else {
+                chainAt(index, node);
+            }
+        }
+    }
+
+    //----------------------------------------------------------------------------------------------
+
+    /**
+     * Chains the given list node as head and if the list is empty as last as well.
+     * 
+     * @param node The stated node
+     */
+    private void chainFirst(final ListNode node) {
+        if (isEmpty()) { last = node; }
+
+        node.next = head;
+        head = node;
+    }
+
+    /**
+     * Chains the given list node as last.
+     * 
+     * @param node The stated node
+     */
+    private void chainLast(final ListNode node) {      
+        last.next = node;
+        last = node;        
+    }
+
+    /**
+     * Chains the given node to the list at the given index.
+     * 
+     * @param index The index at which the node should be inserted
+     * @param node The node to insert
+     */
+    private void chainAt(final int index, final ListNode node) {
+        ListNode prevNode = getNode(index - 1);
+        ListNode subseqNode = prevNode.next;
+        
+        prevNode.next = node;
+        node.next = subseqNode;
+    }
+
+    //----------------------------------------------------------------------------------------------
+
+    /**
+     * Unchains the given list node from the list.
+     * 
+     * @param index The index at which the node to be removed is located
+     * @return The removed node
+     */
+    private ListNode unchainNode(final int index) {
+        ListNode node = null;
+        
+        boolean removeFirst = (index == 0);
+        if (removeFirst) {
+            node = unchainFirst();
+        } else {
+            boolean removeLast = (index == (size() - 1));
+            if (removeLast) {
+                node = unchainLast();
+            } else {
+                node = unchainAt(index);
+            }
+        }
+        
+        return node;
+    }
+
+    //----------------------------------------------------------------------------------------------
+
+    /**
+     * Removes the head and sets the successor as new head.
+     * 
+     * @return The removed node
+     */
+    private ListNode unchainFirst() {       
+        ListNode node = head;
+        if (size() == 1) {
+            head = null;
+            last = null;
+        } else {
+            head = head.next;
+        }
+
+        return node;
+    }
+
+    /**
+     * Removes the last and sets the predecessor as new last.
+     * 
+     * @return The removed node
+     */
+    private ListNode unchainLast() {       
+        ListNode node = last;
+        
+        int indexBeforeLast = (size() - 2);
+        ListNode prevNode = getNode(indexBeforeLast);
+
+        last = prevNode;
+        prevNode.next = null;
+
+        return node;
+    }
+
+    /**
+     * Removes the node at the given index.
+     * 
+     * @param index The index at which the node to be removed is located
+     * @return The removed node
+     */
+    private ListNode unchainAt(final int index) {
+        ListNode node = null;
+        
+        ListNode prevNode = getNode(index - 1);
+        ListNode successorNode = prevNode.next.next;
+
+        node = prevNode.next;
+        prevNode.next = successorNode;
+
+        return node;
+    }
+    
+    //----------------------------------------------------------------------------------------------
+
+    /**
+     * Get the node at the given index.
+     * 
+     * @param index The stated index
+     * @return The stated list node
+     */
+    private ListNode getNode(final int index) {
+        ListNode node = head;
+        for (int i = 0; i < index; i++) {
+            node = node.next;
+        }
+        
+        return node;
+    }
+
+    //----------------------------------------------------------------------------------------------
+
+    /**
+     * Checks the given index whether it is greater than or equal to the size or whether the index
+     * is less than 0. If yes an <code>IndexOutOfBoundsException</code> is thrown.
      * 
      * @param index The index to check
      */
