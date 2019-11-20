@@ -5,8 +5,6 @@
 
 package lists;
 
-import java.util.Iterator;
-
 /**
  * Class for testing my list implementations.
  * 
@@ -16,29 +14,55 @@ public final class ListTester {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * Tests the lists.
+     * Test the lists.
      * 
      * @param args The arguments
      */
     public static void main(final String[] args) {
-        List<Integer> list = new SinglyLinkedList<>();
+        List<Integer> list = new DoublyLinkedList<>();
+        //List<Integer> list = new SinglyLinkedList<>();
 
+        list.add(0, 2_000_000);
+        list.remove(0);
+        
         for (int i = 0; i < 10; i++) {
             list.add(i);
         }
-                
-        for (int i = 0; i < list.size(); i++) {
-            System.out.println(list.get(i));
-        }
         
-        Iterator<Integer> it = list.iterator();
-        while (it.hasNext()) {
-            System.out.println(it.next());
-        }
+        System.out.println(list.toString());
+        System.out.println("The size is: " + list.size());
         
-        for (Integer i : list) {
-            System.out.println(i);
-        }
+        list.add(0, 2_000_000);
+
+        System.out.println(list.toString());
+        System.out.println("The size is: " + list.size());
+
+        list.add(5, 4_000_000);
+
+        System.out.println(list.toString());
+        System.out.println("The size is: " + list.size());
+   
+        System.out.println("The element is: " + list.get(5));
+        
+        list.remove(0);
+        System.out.println(list.toString());
+        System.out.println("The size is: " + list.size());
+
+        list.remove(4);
+        System.out.println(list.toString());
+        System.out.println("The size is: " + list.size());
+
+        list.remove(9);
+        System.out.println(list.toString());
+        System.out.println("The size is: " + list.size());
+
+        list.remove(3);
+        System.out.println(list.toString());
+        System.out.println("The size is: " + list.size());
+        
+        list.add(7, 4_000_000);
+        System.out.println(list.toString());
+        System.out.println("The size is: " + list.size());
     }
 
     //----------------------------------------------------------------------------------------------
