@@ -65,17 +65,6 @@ public interface List<T> extends Iterable<T> {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * Removes the given element from the list. Returns whether the operation was
-     * successfully.
-     * 
-     * @param element The stated element
-     * @return Whether the operation was successfully
-     */
-    boolean remove(T element);
-
-    //----------------------------------------------------------------------------------------------
-
-    /**
      * Removes the element at the given index from the list. Returns the removed
      * element or null if the element wasn't found in the list.
      * 
