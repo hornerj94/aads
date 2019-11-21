@@ -5,6 +5,8 @@
 
 package lists;
 
+import java.util.ListIterator;
+
 /**
  * List interface that describes operations of a list.
  * 
@@ -73,5 +75,14 @@ public interface List<T> extends Iterable<T> {
      */
     T remove(int index);
 
+    // ---------------------------------------------------------------------------------------------
+    
+    /**
+     * Returns a list iterator over the elements in this list (in proper sequence). 
+     *
+     * @return a list iterator over the elements in this list (in proper sequence)
+     */
+    ListIterator<T> listIterator();
+    
     // ---------------------------------------------------------------------------------------------
 }

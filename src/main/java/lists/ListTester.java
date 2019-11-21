@@ -5,6 +5,9 @@
 
 package lists;
 
+import java.util.Iterator;
+import java.util.ListIterator;
+
 /**
  * Class for testing my list implementations.
  * 
@@ -63,6 +66,21 @@ public final class ListTester {
         list.add(7, 4_000_000);
         System.out.println(list.toString());
         System.out.println("The size is: " + list.size());
+        
+        ListIterator<Integer> it = list.listIterator();
+        
+        System.out.println("ascending iteration");
+        System.out.println();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
+        
+        System.out.println("descending iteration");
+        System.out.println();
+        while (it.hasPrevious()) {
+            System.out.println(it.previous());
+            
+        }
     }
 
     //----------------------------------------------------------------------------------------------
