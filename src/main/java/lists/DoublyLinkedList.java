@@ -6,6 +6,7 @@
 package lists;
 
 import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
 /**
@@ -170,7 +171,65 @@ public class DoublyLinkedList<T> implements List<T> {
     }
     
     //----------------------------------------------------------------------------------------------
+
+    /**
+     *
+     */
+    public ListIterator<T> listIterator() {
+        return new ListIterator<T>() {
+
+            ListNode prevNode = null;
+            
+            ListNode nextNode = head;
+            
+            @Override
+            public boolean hasNext() { return nextNode != null; }
+
+            @Override
+            public T next() {
+                if (nextNode == null) { throw new NoSuchElementException(); }
+                
+                T value = nextNode.data;
+                prevNode = nextNode;
+                nextNode = nextNode.next;
+
+                return value;
+            }
+
+            @Override
+            public boolean hasPrevious() { return prevNode != null; }
+
+            @Override
+            public T previous() {
+                if (prevNode == null) { throw new NoSuchElementException(); }
+                
+                T value = prevNode.data;
+                
+                nextNode = prevNode;
+                prevNode = prevNode.previous;
+                
+                return value;
+            }
+
+            @Override
+            public int nextIndex() { return 0; /* not to be implemented */ }
+
+            @Override
+            public int previousIndex() { return 0; /* not to be implemented */ }
+
+            @Override
+            public void remove() { /* not to be implemented */ }
+
+            @Override
+            public void set(final T e) { /* not to be implemented */ }
+
+            @Override
+            public void add(final T e) { /* not to be implemented */ }
+        };
+    }
     
+    //----------------------------------------------------------------------------------------------
+
     /**
      * Chains the given list node into the list.
      * 
