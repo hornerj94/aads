@@ -6,6 +6,7 @@
 package lists;
 
 import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
 /**
@@ -166,6 +167,17 @@ public final class SinglyLinkedList<T> implements List<T> {
         };
     }
     
+    //----------------------------------------------------------------------------------------------
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public ListIterator<T> listIterator() {
+        // not to be implemented
+        return null;
+    }
+
     //----------------------------------------------------------------------------------------------
     
     /**
