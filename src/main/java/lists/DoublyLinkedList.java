@@ -86,10 +86,7 @@ public class DoublyLinkedList<T> implements List<T> {
     public T get(final int index) {
         checkIndex(index);
         
-        ListNode node = head;
-        for (int i = 0; i < index; i++) {
-            node = node.next;
-        }
+        ListNode node = getNode(index);
 
         return node.data;
     }
@@ -173,14 +170,16 @@ public class DoublyLinkedList<T> implements List<T> {
     //----------------------------------------------------------------------------------------------
 
     /**
-     *
+     * Returns a list-iterator of the elements in this list (in proper sequence)
+     * 
+     * @return An <code>ListIterator</code>.
      */
     public ListIterator<T> listIterator() {
         return new ListIterator<T>() {
 
-            ListNode prevNode = null;
+            private ListNode prevNode = null;
             
-            ListNode nextNode = head;
+            private ListNode nextNode = head;
             
             @Override
             public boolean hasNext() { return nextNode != null; }
@@ -395,8 +394,8 @@ public class DoublyLinkedList<T> implements List<T> {
             }
         } else {
             node = last;
-            int size2 = size();
-            int lastIndex = (size2 - 1);
+            int currentSize = size();
+            int lastIndex = (currentSize - 1);
             int backwardJumps = (lastIndex - index);
             for (int i = 0; i < backwardJumps; i++) {
                 node = node.previous;
@@ -409,7 +408,7 @@ public class DoublyLinkedList<T> implements List<T> {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * Get the middle index of the list. If the size of the list is odd, one is substracted.
+     * Get the middle index of the list. If the size of the list is odd, one is subtracted.
      * 
      * @return The middle index
      */
