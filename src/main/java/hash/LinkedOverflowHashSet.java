@@ -36,6 +36,18 @@ public final class LinkedOverflowHashSet<E> implements Set<E> {
      */
     public static void main(final String[] args) {
         LinkedOverflowHashSet<String> numbers = new LinkedOverflowHashSet<>(53);
+
+//        // Test adding and removing
+//        for (Integer i = 0; i < 40; i++) {
+//            numbers.add(i.toString());
+//            System.out.println(numbers.size);
+//        }
+//        for (Integer i = 0; i < 40; i++) {
+//            numbers.remove(i.toString());
+//            System.out.println(numbers.size);
+//        }      
+
+//        // Test rehashing
         for (Integer i = 0; i < 90; i++) {
             numbers.add(i.toString());
             System.out.println(numbers.size);
@@ -141,15 +153,14 @@ public final class LinkedOverflowHashSet<E> implements Set<E> {
 
         int key = data.hashCode();
         List<E> list = buckets[getPosition(key, capacity)];
-        for (E element : list) {
-            if (key == element.hashCode()) { return false; }
-        }
+        
+        boolean isElementInList = list.contains(data); 
+        if (isElementInList) { return false; }
                 
         list.add(data);
         size++;
 
         if (isLoadFactorExceeded()) { rehash(); }
-        
         
         return true;
     }
@@ -159,8 +170,12 @@ public final class LinkedOverflowHashSet<E> implements Set<E> {
      */
     @Override
     public boolean contains(E data) {
-        // TODO Auto-generated method stub
-        return false;
+        if (data == null) { return false; }
+
+        int key = data.hashCode();
+        List<E> list = buckets[getPosition(key, capacity)];
+
+        return list.contains(data);
     }
 
     /**
@@ -168,9 +183,15 @@ public final class LinkedOverflowHashSet<E> implements Set<E> {
      */
     @Override
     public boolean remove(E data) {
+        if (data == null) { return false; }
+
+        int key = data.hashCode();
+        List<E> list = buckets[getPosition(key, capacity)];
+                        
+        boolean isElementRemoved = list.remove(data);
         size--;
         
-        return false;
+        return isElementRemoved;    
     }
 
     //---------------------------------------------------------------------------------------------
