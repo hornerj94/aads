@@ -189,8 +189,8 @@ public final class LinkedOverflowHashSet<E> implements Set<E> {
         List<E> list = buckets[getPosition(key, capacity)];
                         
         boolean isElementRemoved = list.remove(data);
-        size--;
-        
+        if (isElementRemoved) { size--; }        
+
         return isElementRemoved;    
     }
 
