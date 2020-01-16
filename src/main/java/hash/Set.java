@@ -50,7 +50,7 @@ public interface Set<E> {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * The size method returns the size of the set.
+     * The current number of elements in this set.
      * 
      * @return The size of the set
      */
