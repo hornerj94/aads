@@ -24,7 +24,7 @@ public final class LinkedOverflowHashSet<E> implements Set<E> {
     /** Specifies the factor by which the table is enlarged. */
     private static final int REHASH_MULTIPLIER = 2;
 
-    /** The maximum load factor of the hash table */
+    /** The maximum load factor of the hash table. */
     private static final double DEFAULT_LOAD_FACTOR = 0.8;
     
     //---------------------------------------------------------------------------------------------
@@ -66,13 +66,13 @@ public final class LinkedOverflowHashSet<E> implements Set<E> {
     private static Integer getCapacity(final Integer initialCapacity) {
         if (initialCapacity == null || initialCapacity == 0) { return 0; }
         
-        Integer adaptedCapacity = (int) (initialCapacity * (1.0 / DEFAULT_LOAD_FACTOR));
+        Integer adaptedInitialCapacity = (int) (initialCapacity * (1.0 / DEFAULT_LOAD_FACTOR));
                 
         Integer capacity = 0;
-        if (adaptedCapacity < 52) {
+        if (adaptedInitialCapacity < 52) {
             capacity = 53;
         } else {
-            Integer lowerPowerOfTwo = Integer.highestOneBit(adaptedCapacity);
+            Integer lowerPowerOfTwo = Integer.highestOneBit(adaptedInitialCapacity);
             Integer upperPowerOfTwo = lowerPowerOfTwo << 1;
                     
             List<Integer> primes = calcPrimeNumbers(lowerPowerOfTwo, upperPowerOfTwo);        
@@ -87,7 +87,7 @@ public final class LinkedOverflowHashSet<E> implements Set<E> {
     /**
      * Calculate all prime numbers till the upper bound, removes the ones that are below the lower
      * bound and returns the result as a list. The method is an implementation of the sieve of
-     * eratosthenes algorithm and it should have a complexity of O(n^2)
+     * eratosthenes algorithm and it should has a time complexity of O(n^2).
      * 
      * @param lowerBound The number to calculate
      * @param upperBound The number to calculate
