@@ -221,9 +221,11 @@ public final class LinkedOverflowHashSet<E> implements Set<E> {
      */
     private boolean isLoadFactorExceeded() {
         double usedSpace = (size / (double) capacity);
+
         System.out.println("Capacity is: " + capacity);
         System.out.println("Size is: " + size);
         System.out.println("Checked used space, it is: " + usedSpace);
+        
         if (DEFAULT_LOAD_FACTOR <= usedSpace) { 
             System.out.println("The load factor is exceeded");
             
@@ -240,7 +242,8 @@ public final class LinkedOverflowHashSet<E> implements Set<E> {
      */
     private void rehash() {  
         System.out.println("Rehashing started");
-        int newCapacity = REHASH_MULTIPLIER * capacity;
+        int newCapacity = REHASH_MULTIPLIER * capacity; 
+        // TODO Check whether this is still a prime?
         
         @SuppressWarnings({"unchecked"})
         LinkedList<E>[] newBuckets = 
