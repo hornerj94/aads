@@ -87,6 +87,7 @@ public class Heap<T extends Comparable<? super T>> {
         } 
         else if (size == 1) { System.out.println(" PARENT : " + heap[0]); } 
         else { System.out.println(" Tree empty "); }
+        System.out.println();
     }
 
     //---------------------------------------------------------------------------------------------
@@ -116,7 +117,7 @@ public class Heap<T extends Comparable<? super T>> {
                         ? leftChildPos : rightChildPos;
 
                 swap(position, childPosition); 
-                minHeapify(childPosition); 
+                minHeapify(childPosition); // We continue to leak the old root element
             } 
         } 
     } 
@@ -129,6 +130,7 @@ public class Heap<T extends Comparable<? super T>> {
      * @param position The stated child node position
      * @return The stated parent node position
      */
+    @SuppressWarnings("unused")
     private int parent(final int position) { return (position - 1) / 2; } 
 
     /**
@@ -137,7 +139,7 @@ public class Heap<T extends Comparable<? super T>> {
      * @param position The parent node position
      * @return The stated left child node position
      */
-    private int getLeftChildPos(final int position) { return (2 * position) +1 ; } 
+    private int getLeftChildPos(final int position) { return (2 * position) + 1 ; } 
     
     /**
      * Returns the position of the right child of the node currently at the given position.
