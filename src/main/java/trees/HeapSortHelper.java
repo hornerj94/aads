@@ -3,7 +3,7 @@
  * All Rights Reserved.
  */
 
-package heap;
+package trees;
 
 import java.util.ArrayList;
 import java.util.List;

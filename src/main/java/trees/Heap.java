@@ -1,4 +1,4 @@
-package heap;
+package trees;
 
 import java.util.NoSuchElementException;
 
