@@ -1,15 +1,16 @@
 package graphs;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
-
-import graphs.Graph.Edge;
-import graphs.Graph.Node;
-import hash.LinkedOverflowHashSet;
+import java.util.PriorityQueue;
+import java.util.TreeSet;
 
 /**
  * Class for representing a simple directed graph. The graph uses an adjacency list to manage the
@@ -147,6 +148,35 @@ public class DirectedGraph {
 	
     //---------------------------------------------------------------------------------------------
 	
+	/**
+     * Get a map with the labels of the node and the distance to the node with the given label.
+     * 
+     * @param startNodeLabel
+     * @return A map with the labels of the nodes as key and the distance to the node with the
+     *         given label as value
+     */
+	public Map<String, Integer> dijkstra(final String startNodeLabel) {       
+        Collection<Node> nodes = nodeSet.values();        
+        Map<String, Integer> labelToDistance = new HashMap<>();
+
+        PriorityQueue<Node> queue = new PriorityQueue<Node>(new Comparator<Node>() {
+            @Override
+            public int compare(final Node o1,final Node o2) {
+                
+                return 0;
+            }
+        });
+        queue.addAll(nodes);
+        
+        Node lowestDistanceNode, destNode;
+        Iterator<Edge> edgeIterator; Edge edge;
+        
+        Node startNode = getNode(startNodeLabel);
+        labelToDistance.put(startNodeLabel, 0);
+	}
+
+    //---------------------------------------------------------------------------------------------
+
 	/**
      * {@inheritDoc}
      */
